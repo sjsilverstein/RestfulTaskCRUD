@@ -1,0 +1,24 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+<button (click)="getTasks()">Go get all of the Tasks</button>
+<h2>For Loop that Tasks</h2>
+<ul>
+  <li *ngFor="let t of tasks"> 
+    <p>{{t.title}}</p>
+    <p>{{t.description}}</p>
+    <p>{{t.completed}}</p>
+    <button (click)="deleteTask(t._id)">Delete this Task!</button>
+  </li>
+    
+</ul>
+<form (submit)="newTaskForm()" method="POST">
+  {{newtask | json}}
+  <p>Title: </p><input type="text" name="newtask.title" [(ngModel)]="newtask.title">
+  <p>Description: </p><input type="text"  name="newtask.description" [(ngModel)]="newtask.description">
+  <input type="submit" value="Add this Task to the Mongo DB...">
+</form>
+
